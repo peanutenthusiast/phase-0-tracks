@@ -10,3 +10,4 @@
 **Commit saves and documents a change to a repository. A good commit message indicates for human eyes what's been changed, e.g. "Add more code"**
 * What is a merge conflict?
 **A merge conflict is when changes on a branch cannot be committed to the master because different changes exist on each branch.**
+*Almond*
