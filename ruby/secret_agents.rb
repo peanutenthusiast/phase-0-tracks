@@ -5,19 +5,25 @@
 #If it equals a space, then puts a space.
 #The expected output is the string with each
 #letter advanced one over.
-password = gets.chomp.to_s
+def encrypt(password)
   index = 0
   while index < password.length
     if password[index] == " "
-      p " "
+      print " "
+    elsif password[index] == "z"
+      password[index] = "a"
+      #password.delete!("z")
+      #zed -> aee
     else 
       password[index] = password[index].next
     end
     index += 1
   end
+  puts password
+end
 
-puts password
-
+encrypt("abc")
+encrypt("zed")
 
 #Define the string.
 #Use the index on the string
@@ -29,9 +35,10 @@ puts password
 #The expected output is the string with each 
 #letter changed to the previous letter.
 
-alphabet = "abcdefghijklmnopqrstuvwxyz"
-i = 0
-while i < password.length
+def decrypt(password)
+  alphabet = "abcdefghijklmnopqrstuvwxyz"
+  i = 0
+  while i < password.length
     if password[i] == " "
       print " "
     else 
@@ -40,7 +47,12 @@ while i < password.length
       print alphabet[a - 1]
     end
     i += 1
+  end
+  puts " "
 end
+
+decrypt("bcd")
+decrypt("afe")
 
 #bag -> cbh -> refer to alphabet index -> 
 #get index number for each letter -> then 
