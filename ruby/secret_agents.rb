@@ -29,6 +29,19 @@ puts password
 #The expected output is the string with each 
 #letter changed to the previous letter.
 
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+i = 0
+while i < password.length
+    if password[i] == " "
+      print " "
+    else 
+      password_letter = password[i]
+      a = alphabet.index(password_letter)
+      print alphabet[a - 1]
+    end
+    i += 1
+end
+
 #bag -> cbh -> refer to alphabet index -> 
 #get index number for each letter -> then 
 #acquire previous index number. 
