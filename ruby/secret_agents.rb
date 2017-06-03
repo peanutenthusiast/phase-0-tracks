@@ -12,8 +12,6 @@ def encrypt(password)
       print " "
     elsif password[index] == "z"
       password[index] = "a"
-      #password.delete!("z")
-      #zed -> aee
     else 
       password[index] = password[index].next
     end
@@ -22,8 +20,8 @@ def encrypt(password)
   puts password
 end
 
-encrypt("abc")
-encrypt("zed")
+#encrypt("abc")
+#encrypt("zed")
 
 #Define the string.
 #Use the index on the string
@@ -48,14 +46,33 @@ def decrypt(password)
     end
     i += 1
   end
-  puts " "
 end
 
-decrypt("bcd")
-decrypt("afe")
+#decrypt("bcd")
+#decrypt("afe")
 
-#bag -> cbh -> refer to alphabet index -> 
-#get index number for each letter -> then 
-#acquire previous index number. 
-#assemble previous index numbers and convert to
-#"original" word.
+# decrypt(encrypt("swordfish"))
+
+#Nested methods do not work, so neither will this.
+
+#Asks a secret agent (the user) whether they would like to decrypt or encrypt a password
+puts "Would you like to encrypt or decrypt a password? Enter encrypt or decrypt."
+answer = gets.chomp
+#Asks them for the password
+puts "What is the password?"
+userp = gets.chomp.to_s 
+#Conducts the requested operation, prints the result to the screen, and exits
+while answer == "encrypt" || answer == "decrypt" do 
+  password = userp
+  if answer == "encrypt"
+    puts encrypt(password)
+    break
+  elsif answer == "decrypt"
+    puts decrypt(password)
+    break
+  else
+    puts "Please answer encrypt or decrypt."
+    answer = gets.chomp!
+  end
+end
+
