@@ -1,0 +1,43 @@
+* {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: darkblue;
+}
+p{
+  background-color : white;
+  border-top: 5px solid blue;
+  border-left: 5px solid green;
+  border-bottom: 5px solid pink;
+  border-right: 5px solid red;
+}
+body {
+  background-image: url( "http://www.planwallpaper.com/static/images/background-design-14-Cool-Backgrounds.jpg");
+}
+/*
+body{
+  background-image: url(https://www.w3schools.com/css/img_lights.jpg);
+}
+*/
+
+h1{
+  background-color : white;
+}
+
+.column-1 {
+  font : Arial;
+  background-color : beige;
+  padding : 20px;
+  margin : 20px;
+  display : inline-block;
+  vertical-align: text-top;
+  width: 35%;
+}
+
+.column-2 {
+  font : Arial;
+  background-color : beige;
+  margin : 20px;
+  padding : 20px;
+  display : inline-block;
+  vertical-align: text-top;
+  width: 35%;
+}
