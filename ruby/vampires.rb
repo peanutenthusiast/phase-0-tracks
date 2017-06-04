@@ -3,7 +3,7 @@ number_processed = gets.chomp.to_i
 
 while number_processed > 0 do
   puts "What is your name?"
-  employee = gets.chomp
+  name = gets.chomp
 
   puts "How old are you?"
   age = gets.chomp.to_i
@@ -17,7 +17,7 @@ while number_processed > 0 do
   puts "Would you like to enroll in the company's health insurance? Reply yes or no."
   health_i = gets.chomp
 
-  if employee.include?("d", "r", "a", "c", "u", "l", "a", "t" "f", "n", "g")
+  if name == "Drake Cula" || name == "Tu Fang"
     print "Definitely a vampire."
   elsif (garlic == "no" && health_i == "no") && age > 100
     print "Almost certainly a vampire."
