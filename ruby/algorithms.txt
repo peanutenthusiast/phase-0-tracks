@@ -1,0 +1,46 @@
+Elevator Algorithm
+- Ask the rider, "Up or down?""
+- If the rider responds "up", ask, "Which floor?"
+    - If the desired floor number is higher than the current floor number:
+        - Locate the button for the desired floor number.
+        - Press the button.
+        - Wait for the elevator to arrive.
+        - When the elevator arrives, open the door with the "<||>" button.
+        - Bid rider goodbye with "See you later, alligator."
+        - Close the elevator with the "|><|" button.
+    - Otherwise:
+        - Ask, "down instead?"  
+- If the rider responds "down," ask, "Which floor?"
+    -If the desired floor number is lower than the current floor number:
+        - Locate the button for the desired floor number.
+        - Press it.
+        - Wait for the elevator to arrive.
+        - When the elevator arrives, open the door with the "<||>" button.
+        - Bid rider goodbye with "See you later, alligator."
+        - Close the elevator with the "|><|" button.
+    - Otherwise:
+        - Ask, "up instead?" 
+- Else if the desired floor number is the current floor:
+    -Respond with "You're already here, buddy."
+- Else
+    - Respond with, "Take the stairs, your feet need no repairs."
+
+Pairing Scheduling Algorithm
+- Ask the user for assignment number and time preferences in format "?.? DAY ??-?? AM/PM.""
+- Log into dbc-phase0.slack.com with user information.
+- Click on #gophers-pairing.
+- Click on "Message #gophers-pairing"
+- Write, "[LOOKING] ?.? ??-?? AM/PM"
+- While someone replies with different time:
+    - Compare this time with user's preferred time.
+    - Identify common time.
+    - Reply with, "How about (common time)?"
+    - If reply is "sure" or "can do,"
+        - Reply with, "Okay, will mark booked. Excited to pair with you!"
+        - Find original post and click ...
+        - Click "Edit message"
+        - Edit LOOKING to BOOKED.
+    - Otherwise:
+        - Reply with, "Sorry, we'll pair next time!"
+- Enter affirmed pairing time with pair on Wunderlist.
+
