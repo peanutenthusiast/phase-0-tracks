@@ -6,7 +6,7 @@
 # Fur: So much you will cry
 # Eye Style: Beads dropped from heaven
 # Name: Fluffy Beautiful Baby 
-# Color: Sheer Pure White
+# Color: Whiter than Heaven
 
 # BEHAVIOR -----------------------
 # Bark
