@@ -20,6 +20,7 @@ class Santa
 
   def celebrate_age(a)
     @age = @age + (1 * a)
+    p "Santa doesn't look too bad for #{age}-years-old."
   end
 
   def get_mad_at(reindeer_name)
@@ -61,13 +62,19 @@ santa.gender = "Vaporbabe9999"
 
 p "#{santa.gender} Santa doesn't look too bad for #{santa.age} years old."
 
-santas = []
-nonsensical_genders = ["toad", "cup", "flagella", "exuberant", "fortitude", "interstitial", "vaporbabe"]
-nonsensical_ethnicities = ["grotundean", "fluctilian", "genovian", "martian", "plutonian", "aerolian"]
-nonsensical_genders.length.times do |i|
-  santas << Santa.new(nonsensical_genders[i], nonsensical_ethnicities[i])
-end
+# santas = []
+# nonsensical_genders = ["toad", "cup", "flagella", "exuberant", "fortitude", "interstitial", "vaporbabe"]
+# nonsensical_ethnicities = ["grotundean", "fluctilian", "genovian", "martian", "plutonian", "aerolian"]
+# nonsensical_genders.length.times do |i|
+#   santas << Santa.new(nonsensical_genders[i], nonsensical_ethnicities[i])
+# end
 
+santas = []
+example_genders = ["agender", "female", "bigender", "male", "female", "gender fluid", "N/A", "pangender", "gender bender"]
+example_ethnicities = ["black", "Latino", "white", "Japanese-African", "prefer not to say", "Mystical Creature (unicorn)", "N/A", "Thai African", "Chinese Indian"]
+example_genders.length.times do |i|
+  santas << Santa.new(example_genders[i], example_ethnicities[i])
+end
 
 santas.each do |santa|
   santa.speak
@@ -79,7 +86,11 @@ santas.each do |santa|
 end
 
 
-
-
+100.times do 
+  new_santa = Santa.new(example_genders.sample, example_ethnicities.sample)
+  new_santa.celebrate_age(rand(140))
+  cookie_kind = ["snickerdoodle", "gingerbread", "oreo", "peanut butter cookie"]
+  santa.eat_milk_and_cookies(cookie_kind.sample)
+end
 
 
