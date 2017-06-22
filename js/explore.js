@@ -15,7 +15,8 @@ function reverseString(str) {
   } else {
     console.log("nothing to see here folks")
   }
-  }
 }
 
 reverseString('palindrome');
+
+reverseString('butt');
