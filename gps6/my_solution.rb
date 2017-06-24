@@ -82,6 +82,8 @@ STATE_DATA.each do |k, v|
   k.virus_effects
 end
 
+
+
 # initialize(state_of_origin, population_density, population)
 # alabama = VirusPredictor.new("Alabama", STATE_DATA["Alabama"][:population_density], STATE_DATA["Alabama"][:population])
 # alabama.virus_effects
