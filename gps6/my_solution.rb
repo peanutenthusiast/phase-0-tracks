@@ -4,8 +4,8 @@
 # We spent [#] hours on this challenge.
 
 # EXPLANATION OF require_relative
-#
-#
+# require_relative accesses the code from state_data.rb
+# require would require that we write the full address of require, includig the .rb
 require_relative 'state_data'
 
 class VirusPredictor
