@@ -39,4 +39,11 @@ function ifCommon(object1, object2) {
 console.log(ifCommon(person1, person2));
 console.log(ifCommon(person1, animal1));
 ifCommon(animal1, animal2);
+//call two objects as arguments
+//define keys and values as separate arrays
+//loop through the key with index
+//if the key of a certain index is equal to that the other
+//and if the value of that certain index is equal to that of the other
+//and ALL that is true, return true
+//else, return false.
 
