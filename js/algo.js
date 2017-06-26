@@ -25,19 +25,20 @@ animal1 = {animal: "Dog", legs: 4};
 animal2 = {animal: "Dog", legs: 3};
 
 function ifCommon(object1, object2) {
-  var entries = Object.entries(object1);
-  var entries2 = Object.entries(object2);
-  var pairs = entries[0];
-  var pairs2 = entries[1];
-  var pairs3 = entries2[0];
-  var pairs4 = entries2[1];
-  for (var i = pairs.length - 1; i >= 0; i--) {
-    if(pairs[i] == pairs3[i] || pairs2[i] == pairs4[i]) {
+  var keys = Object.keys(object1);
+  var keys2 = Object.keys(object2);
+  var vals = Object.keys(object1).map(function(key) {
+    return object2[key];});
+  var vals2 = Object.keys(object2).map(function(key) {
+    return object2[key];});
+  for (var i = 0; i < keys.length; i++) {
+    if(keys[i] == keys2[i] && vals[i] == vals2[i]) {
       return true;
   }
   return false;
+  }
 }
-}
+
 console.log(ifCommon(person1, person2));
 console.log(ifCommon(animal1, animal2));
 console.log(ifCommon(animal2, person1));
