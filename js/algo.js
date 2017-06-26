@@ -25,51 +25,53 @@ animal1 = {animal: "Dog", legs: 4};
 animal2 = {animal: "Dog", legs: 3};
 
 function ifCommon(object1, object2) {
-  var keys = Object.keys(object1);
-  var keys2 = Object.keys(object2);
-  var values1 = Object.values(object1);
-  var values2 = Object.values(object2);
-  for (var i = keys.length - 1; i >= 0; i--) {
-    if ((keys[i] == keys2[i] && values[i] == values2[i]) === true) {
+  var entries = Object.entries(object1);
+  var entries2 = Object.entries(object2);
+  var pairs = entries[0];
+  var pairs2 = entries[1];
+  var pairs3 = entries2[0];
+  var pairs4 = entries2[1];
+  for (var i = pairs.length - 1; i >= 0; i--) {
+    if(pairs[i] == pairs3[i] || pairs2[i] == pairs4[i]) {
       return true;
-    } else {
-      return false;
-    }
   }
+  return false;
 }
-
+}
 console.log(ifCommon(person1, person2));
-console.log(ifCommon(person1, animal1));
-ifCommon(animal1, animal2);
-call two objects as arguments
-define keys and values as separate arrays
-loop through the key with index
-if the key of a certain index is equal to that the other
-and if the value of that certain index is equal to that of the other
-and ALL that is true, return true
-else, return false.
+console.log(ifCommon(animal1, animal2));
+console.log(ifCommon(animal2, person1));
+// call two objects as arguments
+// flatten key-pair values to array
+// isolate each inner array as its own
+// loop through the key with index
+// if the key of a certain index is equal to that the other
+// and if the value of that certain index is equal to that of the other
+// and ALL that is true, return true
+// else, return false.
 
 
-//method takes an an integer for length
-//6 = array.length
-//populates an empty array with 6 items
-//each item is a random word from 1 to 10 letters
-//returns the array
-//pops the array the longestWord function which will print the result
+// method takes an an integer for length
+// 6 = array.length
+// populates an empty array with 6 items
+// each item is a random word from 1 to 10 letters
+// returns the array
+// pops the array the longestWord function which will print the result
 
-var randomInt = (Math.random() * (9) + 1)
+var randomInt = Math.round((Math.random() * (9) + 1));
 
-var word = ""
 var alphabet = "abcdefghijklmnopqrstuvwxyz";
 
 function randomWords() {
+  var word = ""
   for (var i = randomInt; i > 0 ; i--) {
-    word += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+    word += alphabet[Math.floor(Math.random() * alphabet.length)];
   }
   return word
 }
 
 var array = [];
+
 
 function getRandomArraysofRandomWords(int) {
   array.length == int;
@@ -81,29 +83,20 @@ function getRandomArraysofRandomWords(int) {
 }
 
 getRandomArraysofRandomWords(3)
-console.log(array)
 longestPhrase(array)
 getRandomArraysofRandomWords(4)
-console.log(array)
 longestPhrase(array)
 getRandomArraysofRandomWords(6)
-console.log(array)
 longestPhrase(array)
 getRandomArraysofRandomWords(7)
-console.log(array)
 longestPhrase(array)
-console.log(array)
 getRandomArraysofRandomWords(5)
-console.log(array)
 longestPhrase(array)
 getRandomArraysofRandomWords(3)
-console.log(array)
 longestPhrase(array)
 getRandomArraysofRandomWords(4)
-console.log(array)
 longestPhrase(array)
 getRandomArraysofRandomWords(10)
-console.log(array)
 longestPhrase(array)
 getRandomArraysofRandomWords(2)
 
