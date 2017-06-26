@@ -1,11 +1,13 @@
 function longestPhrase(arr) {
-  var longest = arr[0].length;
+  var longer = 0;
+  var longest;
   for (var i = 0; i < arr.length; i++) {
-    if (arr[i].length > longest) {
+    if (arr[i].length > longer) {
+      var longer = arr[i].length;
       longest = arr[i];
     }
   }
-  return longest
+  console.log(longest)
 }
 
 arr = ["long phrase","longest phrase","longer phrase"]
@@ -46,4 +48,40 @@ ifCommon(animal1, animal2);
 //and if the value of that certain index is equal to that of the other
 //and ALL that is true, return true
 //else, return false.
+
+
+//method takes an an integer for length
+//6 = array.length
+//populates an empty array with 6 items
+//each item is a random word from 1 to 10 letters
+//returns the array
+//pops the array the longestWord function which will print the result
+
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
+var word = ""
+var alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+function randomWords() {
+  for (var i = 1; i < getRandomArbitrary(1, 10); i++) {
+    word += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+  }
+}
+
+var array = [];
+
+function getRandomArraysofRandomWords(int) {
+  array.length == int;
+  index = 0;
+  while (index < int) {
+    randomWords();
+    array.push(word);
+    index++;
+  }
+  return array
+}
+
+
 
