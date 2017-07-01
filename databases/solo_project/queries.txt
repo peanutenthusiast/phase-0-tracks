@@ -1,0 +1,53 @@
+sqlite> CREATE TABLE not_jackie_chan (
+   ...> id INTEGER PRIMARY KEY,
+   ...> name VARCHAR(255),
+   ...> is_jackie_chan BOOLEAN,
+   ...> martial_arts_id INTEGER
+   ...> ,
+   ...> FOREIGN KEY (martial_arts_id) REFERENCES martial_arts(id)
+   ...> );
+
+sqlite> CREATE TABLE martial_arts (
+   ...> id INTEGER PRIMARY KEY,
+   ...> echelon_name VARCHAR(255)
+   ...> );
+
+sqlite> INSERT INTO martial_arts (echelon_name) VALUES ("white tiger"), ("yella fella"), ("agent orange"), ("midori naito"), ("blue cheddar"), ("purple rain"), ("red & rad"), ("black tag");
+
+sqlite> INSERT INTO not_jackie_chan (name, is_jackie_chan, martial_arts_id) VALUES ("Jack Black", "false", 8), ("Janitor Chan", "true", 7), ("Khaki Jam", "false", 1), ("Tacky Pants", "false", 2), ("Janky Hands", "false", 3), ("Whacky Dan", "false", 6), ("Cacti Clan", "false", 4), ("Hackney Chan", "false", 5);
+
+sqlite> UPDATE martial_arts SET echelon_name="amarillo apocalypse" WHERE echelon_name="yella fella";
+
+sqlite> SELECT * FROM not_jackie_chan, martial_arts WHERE not_jackie_chan.martial_arts_id = martial_arts.id;
+1|Jackal Chan|false|3|3|agent orange
+2|Jack Black|false|8|8|black tag
+3|Janitor Chan|true|7|7|red & rad
+4|Khaki Jam|false|1|1|white tiger
+5|Tacky Pants|false|2|2|amarillo apocalypse
+6|Janky Hands|false|3|3|agent orange
+7|Whacky Dan|false|6|6|purple rain
+8|Cacti Clan|false|4|4|midori naito
+9|Hackney Chan|false|5|5|blue cheddar
+
+sqlite> SELECT not_jackie_chan.name, not_jackie_chan.is_jackie_chan, martial_arts.echelon_name FROM not_jackie_chan JOIN martial_arts ON not_jackie_chan.martial_arts_id = martial_arts.id;
+Jackal Chan|false|agent orange
+Jack Black|false|black tag
+Janitor Chan|true|red & rad
+Khaki Jam|false|white tiger
+Tacky Pants|false|amarillo apocalypse
+Janky Hands|false|agent orange
+Whacky Dan|false|purple rain
+Cacti Clan|false|midori naito
+Hackney Chan|false|blue cheddar
+
+sqlite> SELECT not_jackie_chan.name, not_jackie_chan.is_jackie_chan, martial_arts.echelon_name FROM not_jackie_chan JOIN martial_arts ON not_jackie_chan.martial_arts_id = martial_arts.id;
+Jackal Chan|false|agent orange
+Jack Black|false|black tag
+Khaki Jam|false|white tiger
+Tacky Pants|false|amarillo apocalypse
+Janky Hands|false|agent orange
+Whacky Dan|false|purple rain
+Cacti Clan|false|midori naito
+Hackney Chan|false|blue cheddar
+sqlite>
+
