@@ -1,0 +1,130 @@
+sqlite> CREATE TABLE not_jackie_chan (
+   ...> id INTEGER PRIMARY KEY,
+   ...> name VARCHAR(255),
+   ...> is_jackie_chan BOOLEAN,
+   ...> martial_arts_id INTEGER
+   ...> ,
+   ...> FOREIGN KEY (martial_arts_id) REFERENCES martial_arts(id)
+   ...> );
+
+sqlite> CREATE TABLE martial_arts (
+   ...> id INTEGER PRIMARY KEY,
+   ...> echelon_name VARCHAR(255)
+   ...> );
+
+sqlite> INSERT INTO martial_arts (echelon_name) VALUES ("white tiger"), ("yella fella"), ("agent orange"), ("midori naito"), ("blue cheddar"), ("purple rain"), ("red & rad"), ("black tag");
+
+sqlite> INSERT INTO not_jackie_chan (name, is_jackie_chan, martial_arts_id) VALUES ("Jack Black", "false", 8), ("Janitor Chan", "true", 7), ("Khaki Jam", "false", 1), ("Tacky Pants", "false", 2), ("Janky Hands", "false", 3), ("Whacky Dan", "false", 6), ("Cacti Clan", "false", 4), ("Hackney Chan", "false", 5);
+
+sqlite> UPDATE martial_arts SET echelon_name="amarillo apocalypse" WHERE echelon_name="yella fella";
+
+sqlite> SELECT * FROM not_jackie_chan, martial_arts WHERE not_jackie_chan.martial_arts_id = martial_arts.id;
+1|Jackal Chan|false|3|3|agent orange
+2|Jack Black|false|8|8|black tag
+3|Janitor Chan|true|7|7|red & rad
+4|Khaki Jam|false|1|1|white tiger
+5|Tacky Pants|false|2|2|amarillo apocalypse
+6|Janky Hands|false|3|3|agent orange
+7|Whacky Dan|false|6|6|purple rain
+8|Cacti Clan|false|4|4|midori naito
+9|Hackney Chan|false|5|5|blue cheddar
+
+sqlite> SELECT not_jackie_chan.name, not_jackie_chan.is_jackie_chan, martial_arts.echelon_name FROM not_jackie_chan JOIN martial_arts ON not_jackie_chan.martial_arts_id = martial_arts.id;
+Jackal Chan|false|agent orange
+Jack Black|false|black tag
+Janitor Chan|true|red & rad
+Khaki Jam|false|white tiger
+Tacky Pants|false|amarillo apocalypse
+Janky Hands|false|agent orange
+Whacky Dan|false|purple rain
+Cacti Clan|false|midori naito
+Hackney Chan|false|blue cheddar
+
+sqlite> SELECT not_jackie_chan.name, not_jackie_chan.is_jackie_chan, martial_arts.echelon_name FROM not_jackie_chan JOIN martial_arts ON not_jackie_chan.martial_arts_id = martial_arts.id;
+Jackal Chan|false|agent orange
+Jack Black|false|black tag
+Khaki Jam|false|white tiger
+Tacky Pants|false|amarillo apocalypse
+Janky Hands|false|agent orange
+Whacky Dan|false|purple rain
+Cacti Clan|false|midori naito
+Hackney Chan|false|blue cheddar
+sqlite>
+
+sqlite> SELECT * FROM not_jackie_chan CROSS JOIN martial_arts
+   ...> ;
+1|Jackal Chan|false|3|1|white tiger
+1|Jackal Chan|false|3|2|amarillo apocalypse
+1|Jackal Chan|false|3|3|agent orange
+1|Jackal Chan|false|3|4|midori naito
+1|Jackal Chan|false|3|5|blue cheddar
+1|Jackal Chan|false|3|6|purple rain
+1|Jackal Chan|false|3|7|red & rad
+1|Jackal Chan|false|3|8|black tag
+2|Jack Black|false|8|1|white tiger
+2|Jack Black|false|8|2|amarillo apocalypse
+2|Jack Black|false|8|3|agent orange
+2|Jack Black|false|8|4|midori naito
+2|Jack Black|false|8|5|blue cheddar
+2|Jack Black|false|8|6|purple rain
+2|Jack Black|false|8|7|red & rad
+2|Jack Black|false|8|8|black tag
+4|Khaki Jam|false|1|1|white tiger
+4|Khaki Jam|false|1|2|amarillo apocalypse
+4|Khaki Jam|false|1|3|agent orange
+4|Khaki Jam|false|1|4|midori naito
+4|Khaki Jam|false|1|5|blue cheddar
+4|Khaki Jam|false|1|6|purple rain
+4|Khaki Jam|false|1|7|red & rad
+4|Khaki Jam|false|1|8|black tag
+5|Tacky Pants|false|2|1|white tiger
+5|Tacky Pants|false|2|2|amarillo apocalypse
+5|Tacky Pants|false|2|3|agent orange
+5|Tacky Pants|false|2|4|midori naito
+5|Tacky Pants|false|2|5|blue cheddar
+5|Tacky Pants|false|2|6|purple rain
+5|Tacky Pants|false|2|7|red & rad
+5|Tacky Pants|false|2|8|black tag
+6|Janky Hands|false|3|1|white tiger
+6|Janky Hands|false|3|2|amarillo apocalypse
+6|Janky Hands|false|3|3|agent orange
+6|Janky Hands|false|3|4|midori naito
+6|Janky Hands|false|3|5|blue cheddar
+6|Janky Hands|false|3|6|purple rain
+6|Janky Hands|false|3|7|red & rad
+6|Janky Hands|false|3|8|black tag
+7|Whacky Dan|false|6|1|white tiger
+7|Whacky Dan|false|6|2|amarillo apocalypse
+7|Whacky Dan|false|6|3|agent orange
+7|Whacky Dan|false|6|4|midori naito
+7|Whacky Dan|false|6|5|blue cheddar
+7|Whacky Dan|false|6|6|purple rain
+7|Whacky Dan|false|6|7|red & rad
+7|Whacky Dan|false|6|8|black tag
+8|Cacti Clan|false|4|1|white tiger
+8|Cacti Clan|false|4|2|amarillo apocalypse
+8|Cacti Clan|false|4|3|agent orange
+8|Cacti Clan|false|4|4|midori naito
+8|Cacti Clan|false|4|5|blue cheddar
+8|Cacti Clan|false|4|6|purple rain
+8|Cacti Clan|false|4|7|red & rad
+8|Cacti Clan|false|4|8|black tag
+9|Hackney Chan|false|5|1|white tiger
+9|Hackney Chan|false|5|2|amarillo apocalypse
+9|Hackney Chan|false|5|3|agent orange
+9|Hackney Chan|false|5|4|midori naito
+9|Hackney Chan|false|5|5|blue cheddar
+9|Hackney Chan|false|5|6|purple rain
+9|Hackney Chan|false|5|7|red & rad
+9|Hackney Chan|false|5|8|black tag
+
+sqlite> SELECT * FROM not_jackie_chan NATURAL JOIN martial_arts
+   ...> ;
+1|Jackal Chan|false|3|white tiger
+2|Jack Black|false|8|amarillo apocalypse
+4|Khaki Jam|false|1|midori naito
+5|Tacky Pants|false|2|blue cheddar
+6|Janky Hands|false|3|purple rain
+7|Whacky Dan|false|6|red & rad
+8|Cacti Clan|false|4|black tag
+
