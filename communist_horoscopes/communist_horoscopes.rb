@@ -12,3 +12,4 @@ create_horoscope_table_cmd = <<-SQL_H
     )
 SQL_H
 
+db.execute(create_horoscope_table_cmd)
