@@ -13,7 +13,21 @@ create_horoscope_table_cmd = <<-SQL_H
     )
 SQL_H
 
+create_user_table_cmd = <<-SQL_U
+  CREATE TABLE IF NOT EXISTS users(
+    id INTEGER PRIMARY KEY,
+    name VARCHAR(255),
+    birthday DATE,
+    horoscope_id INTEGER,
+    FOREIGN KEY (horoscope_id) REFERENCES horoscope(id)
+  )
+SQL_U
+
+
 db.execute(create_horoscope_table_cmd)
+
+db.execute(create_user_table_cmd)
+
 
 # db.execute("INSERT INTO horoscopes (horoscope) VALUES ('Conflict will arise in the workplace, and so will the outlet for your proletariat anger. Ready yourself.')")
 
@@ -56,18 +70,38 @@ def convert_birthday_to_sign(birthday)
   return ruby_birthday.zodiac_sign
 end
 
-convert_birthday_to_sign("1992/9/13")
+# convert_birthday_to_sign("1992/9/13")
 
 horoscope_id = ""
 
-# def convert_sign_to_integer(birthday)
-#   if ruby_birthday.aries?
-#     horoscope_id = 1
-#   if ruby_birthday.taurus?
-#     horoscope_id = 2
-#   if ruby_birthday.gemini?
-#     horoscope_id = 3
-#   if ruby_birthday.
+def convert_sign_to_integer(birthday)
+  if ruby_birthday.aries?
+    horoscope_id = 1
+  elsif ruby_birthday.taurus?
+    horoscope_id = 2
+  elsif ruby_birthday.gemini?
+    horoscope_id = 3
+  elsif ruby_birthday.cancer?
+    horoscope_id = 4
+  elsif ruby_birthday.leo?
+    horoscope_id = 5
+  elsif ruby_birthday.virgo?
+    horoscope_id = 6
+  elsif ruby_birthday.libra?
+    horoscope_id = 7
+  elsif ruby_birthday.scorpio?
+    horoscope_id = 8
+  elsif ruby_birthday.saggitarius?
+    horoscope_id = 9
+  elsif ruby_birthday.capricorn?
+    horoscope_id = 10
+  elsif ruby_birthday.aquarius?
+    horoscope_id = 11
+  elsif ruby_birthday.pisces?
+    horoscope_id = 12
+  end
+  return horoscope_id
+end
 
 
 #"Hello comrade. What is your name?"
