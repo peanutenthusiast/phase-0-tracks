@@ -90,7 +90,7 @@ def convert_birthday_to_integer(birthday)
     horoscope_id = 7
   elsif ruby_birthday.scorpio?
     horoscope_id = 8
-  elsif ruby_birthday.saggitarius?
+  elsif ruby_birthday.sagittarius?
     horoscope_id = 9
   elsif ruby_birthday.capricorn?
     horoscope_id = 10
@@ -109,12 +109,19 @@ def identify_user(db, name, birthday, horoscope_id)
 end
 
 puts "Hello comrade. What is your name?"
-user_name = "Mark de Dios"
+user_name = gets.chomp
 
-puts "Hello, Mark de Dios. Tell me, when were you reprod..born? Input in yyyy/mm/dd."
-dob = "1992/9/13"
+puts "Hello, #{user_name}. Tell me, when were you reprod..born? Input in yyyy/mm/dd."
+dob = gets.chomp
 
 sign = convert_birthday_to_ruby_birthday(dob).zodiac_sign
 puts "Ah, a #{sign} I see."
 
 identify_user(db, user_name, dob, convert_birthday_to_integer(dob))
+
+the_fortune = db.execute("select users.name, horoscopes.horoscope from users join horoscopes on users.horoscope_id=horoscopes.id")
+puts the_fortune
+
+db.execute("delete from users")
+
+
