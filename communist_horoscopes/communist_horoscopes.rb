@@ -2,6 +2,7 @@
 
 require 'sqlite3'
 require 'zodiac'
+require 'date'
 
 db = SQLite3::Database.new("communist_horoscopes.db")
 
@@ -32,7 +33,6 @@ horoscopes_string = db.prepare('insert into horoscopes (horoscope) values (?)')
 
 # horoscopes_string.execute('When the capitalist whip lashes, how do you respond? With a bark? A bite? Another whip? Take heed this week.')
 
-
 # horoscopes_string.execute("Your labor power will be extorted. What's new?")
 
 # horoscopes_string.execute("A new capitalist arises, and with them, new tasks. Can you refuse them? Can you accept? Under this system, do we really have a choice?")
@@ -40,3 +40,38 @@ horoscopes_string = db.prepare('insert into horoscopes (horoscope) values (?)')
 # horoscopes_string.execute("This week, show not the weakness of feeling. Our individualist feelings have no place in the revolution.")
 
 # horoscopes_string.execute('The mouth and hands are the crux of the individual. Beware of what you say and do. There is no safe space.')
+
+#Dates in sqlite3 are input as yyyy/mm/dd, 
+#but ruby dates are input as (yyyy, mm, dd).
+#The sqlite3 date must be converted to the ruby date (array) in order to 
+#determine the zodiac sign with .zodiac_sign
+#the horoscope id integer is the integer of the sign
+
+ruby_birthday = ""
+
+def convert_birthday_to_sign(birthday)
+  split_birthday = birthday.split("/")
+  year, month, day = split_birthday[0].to_i, split_birthday[1].to_i, split_birthday[2].to_i
+  ruby_birthday = Date.new(year, month, day) 
+  return ruby_birthday.zodiac_sign
+end
+
+convert_birthday_to_sign("1992/9/13")
+
+horoscope_id = ""
+
+# def convert_sign_to_integer(birthday)
+#   if ruby_birthday.aries?
+#     horoscope_id = 1
+#   if ruby_birthday.taurus?
+#     horoscope_id = 2
+#   if ruby_birthday.gemini?
+#     horoscope_id = 3
+#   if ruby_birthday.
+
+
+#"Hello comrade. What is your name?"
+
+#"Mark de Dios."
+
+#"Hello, Mark de Dios. Tell me, when were you reprod..born? Input in year, date,
