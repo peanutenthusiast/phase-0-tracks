@@ -63,18 +63,17 @@ horoscopes_string = db.prepare('insert into horoscopes (horoscope) values (?)')
 
 ruby_birthday = ""
 
-def convert_birthday_to_sign(birthday)
+def convert_birthday_to_ruby_birthday(birthday)
   split_birthday = birthday.split("/")
   year, month, day = split_birthday[0].to_i, split_birthday[1].to_i, split_birthday[2].to_i
-  ruby_birthday = Date.new(year, month, day) 
-  return ruby_birthday.zodiac_sign
+  return ruby_birthday = Date.new(year, month, day) 
 end
 
-# convert_birthday_to_sign("1992/9/13")
 
 horoscope_id = ""
 
-def convert_sign_to_integer(birthday)
+def convert_birthday_to_integer(birthday)
+  ruby_birthday = convert_birthday_to_ruby_birthday(birthday)
   if ruby_birthday.aries?
     horoscope_id = 1
   elsif ruby_birthday.taurus?
@@ -103,12 +102,19 @@ def convert_sign_to_integer(birthday)
   return horoscope_id
 end
 
+# puts convert_birthday_to_integer("1992/9/13")
+
 def identify_user(db, name, birthday, horoscope_id)
   db.execute("INSERT INTO users (name, birthday, horoscope_id) VALUES (?, ?, ?)", [name, birthday, horoscope_id])
 end
 
-#"Hello comrade. What is your name?"
+puts "Hello comrade. What is your name?"
+user_name = "Mark de Dios"
 
-#"Mark de Dios."
+puts "Hello, Mark de Dios. Tell me, when were you reprod..born? Input in yyyy/mm/dd."
+dob = "1992/9/13"
 
-#"Hello, Mark de Dios. Tell me, when were you reprod..born? Input in year, date,
+sign = convert_birthday_to_ruby_birthday(dob).zodiac_sign
+puts "Ah, a #{sign} I see."
+
+identify_user(db, user_name, dob, convert_birthday_to_integer(dob))
