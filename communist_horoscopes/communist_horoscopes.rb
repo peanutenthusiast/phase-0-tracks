@@ -103,6 +103,9 @@ def convert_sign_to_integer(birthday)
   return horoscope_id
 end
 
+def identify_user(db, name, birthday, horoscope_id)
+  db.execute("INSERT INTO users (name, birthday, horoscope_id) VALUES (?, ?, ?)", [name, birthday, horoscope_id])
+end
 
 #"Hello comrade. What is your name?"
 
