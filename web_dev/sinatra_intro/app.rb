@@ -49,11 +49,19 @@ get '/contact' do
   "667 Dark Avenue"
 end
 
-get '/good_job' do
-  name = params[:name]
-  if name
-    "Good job, #{name}."
+get '/great_job' do
+  person = params[:person]
+  if person
+    "Good job, #{person}!"
   else
-    "Good job."
+    "Good job!"
   end
 end
+
+get '/add/:int1/:int2' do
+  int1 = params[:int1].to_i
+  int2 = params[:int2].to_i
+  result = int1 + int2
+  "#{result}"
+end
+
