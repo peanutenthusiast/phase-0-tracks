@@ -44,3 +44,33 @@ get '/students/:id' do
   student = db.execute("SELECT * FROM students WHERE id=?", [params[:id]])[0]
   student.to_s
 end
+
+#shows fake address
+get '/contact' do
+  "667 Dark Avenue"
+end
+
+#Validate the user.
+get '/great_job' do
+  person = params[:person]
+  if person
+    "Good job, #{person}!"
+  else
+    "Good job!"
+  end
+end
+
+#add integers and return value
+get '/add/:int1/:int2' do
+  int1 = params[:int1].to_i
+  int2 = params[:int2].to_i
+  result = int1 + int2
+  "#{result}"
+end
+
+#add search engine for names in database
+get '/search' do
+  name =  "%#{params[:name]}%"
+  search = db.execute("SELECT * from students where name like ?", name)
+  search.to_s
+end
