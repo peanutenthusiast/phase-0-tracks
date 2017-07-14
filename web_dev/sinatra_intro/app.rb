@@ -45,10 +45,12 @@ get '/students/:id' do
   student.to_s
 end
 
+#shows fake address
 get '/contact' do
   "667 Dark Avenue"
 end
 
+#Validate the user.
 get '/great_job' do
   person = params[:person]
   if person
@@ -58,6 +60,7 @@ get '/great_job' do
   end
 end
 
+#add integers and return value
 get '/add/:int1/:int2' do
   int1 = params[:int1].to_i
   int2 = params[:int2].to_i
@@ -65,3 +68,9 @@ get '/add/:int1/:int2' do
   "#{result}"
 end
 
+#add search engine for names in database
+get '/search' do
+  name =  "%#{params[:name]}%"
+  search = db.execute("SELECT * from students where name like ?", name)
+  search.to_s
+end
